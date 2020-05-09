@@ -10,35 +10,25 @@ body{
 	max-width: 1400px;
 }
 
-#divCanvas {
+canvas {
     position: relative;
-	width: 98%;
-	min-width: 1000px;
-    max-width: 1400px;
-    min-height: 600px;
-    max-height: 790px;
-    background-color: aqua;
+    float: left;
+    clear: left;
 }
 
 button {
     position: relative;
     float: left;
-    clear: left;
     width: 70px;
     height: 25px;
 }
 
-select{
+aside {
     position: relative;
     float: left;
-    clear: left;
 }
 
-aside {
-    position: absolute;
-    top: 10px;
-    right: 450px;
-    width: 250px;
-    height: 450px;
-
+p {
+    text-align: left;
+    
 }
