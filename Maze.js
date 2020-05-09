@@ -174,7 +174,8 @@ class Cell {
     show() {
         const x = this.i * w;
         const y = this.j * w;
-        stroke(255);
+        stroke(255, 255, 255);
+        strokeWeight(2);
         if (this.top) {
             line(x, y, x + w, y);
         }
@@ -190,7 +191,7 @@ class Cell {
 
         if (this.visited) {
             noStroke();
-            fill(72, 117, 56, 100);
+            fill(0, 0, 0);
             rect(x, y, w, w);
 
         }
