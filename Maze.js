@@ -4,20 +4,26 @@ var grid = [];
 var current;
 var stack = [];
 var gridBtn;
+var toggleGrid;
+
+function togGrid() {
+    for (let item of grid) {
+        if (!item.visited) {
+            item.top = !item.top;
+            item.bottom = !item.bottom;
+            item.left = !item.left;
+            item.right = !item.right;
+        }
+    }
+}
 
 function createGrid() {
-    gridBtn = document.getElementById('grid');
     cols = floor(width / w);
     rows = floor(height / w);
     for (let j = 0; j < rows; j++) {
         for (let i = 0; i < cols; i++) {
-            if (gridBtn.value === "No Grid") {
-                let cell = new Cell(i, j, true, true, true, true);
-                grid.push(cell);
-            } else {
-                let cell = new Cell(i, j, false, false, false, false);
-                grid.push(cell);
-            }
+            let cell = new Cell(i, j, true, true, true, true);
+            grid.push(cell);
         }
     }
 };
@@ -32,7 +38,7 @@ function resetGrid() {
 function setup() {
     createCanvas(600, 600);
 
-    gridBtn = document.getElementById('grid');
+    toggleGrid = document.getElementById('toggleGrid');
 
     createGrid();
     current = grid[0];
@@ -54,17 +60,10 @@ function setup() {
         resetGrid();
     });
 
-
-    gridBtn.addEventListener('click', () => {
-        console.log(gridBtn.value)
-        if (gridBtn.value === 'No Grid') {
-            gridBtn.value = 'Grid';
-            resetGrid();
-        } else {
-            gridBtn.value = 'No Grid';
-            resetGrid();
-        }
-    });
+    toggleGrid.addEventListener('click', () => {
+        togGrid();
+        console.log('togGrid clicked');
+    })
 
 };
 
