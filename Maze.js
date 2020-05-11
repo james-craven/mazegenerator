@@ -138,7 +138,7 @@ class Cell {
         const x = this.i * w;
         const y = this.j * w;
         noStroke();
-        fill(103, 247, 54, 100);
+        fill(255,255,255);
         rect(x, y, w, w);
     }
 
