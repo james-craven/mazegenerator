@@ -1,5 +1,5 @@
 var cols, rows;
-var w = 20;
+var w = 50;
 var grid = [];
 var current;
 var stack = [];
@@ -7,6 +7,7 @@ var stack = [];
 function createGrid() {
     cols = floor(width / w);
     rows = floor(height / w);
+    console.log(cols);
     for (let j = 0; j < rows; j++) {
         for (let i = 0; i < cols; i++) {
             let cell = new Cell(i, j);
@@ -30,34 +31,18 @@ function setup() {
     current = grid[0];
     frameRate(60);
 
-    let easy = document.getElementById('easy');
-    let medium = document.getElementById('medium');
-    let hard = document.getElementById('hard');
-    let slow = document.getElementById('slow');
-    let faster = document.getElementById('faster');
-    let fastest = document.getElementById('fastest');
+    let size = document.getElementById('diffSelect');
+    size.addEventListener('change', () => {
+        w = int(size.value);
+        resetGrid();
+    });
+
+    let speed = document.getElementById('speedSelect');
+    speed.addEventListener('change', () => {
+        frameRate(int(speed.value));
+    })
+
     let reset = document.getElementById('reset');
-    easy.addEventListener('click', () => {
-        w = 50;
-        resetGrid();
-    });
-    medium.addEventListener('click', () => {
-        w = 35;
-        resetGrid();
-    });
-    hard.addEventListener('click', () => {
-        w = 20;
-        resetGrid();
-    });
-    slow.addEventListener('click', () => {
-        frameRate(1);
-    });
-    faster.addEventListener('click', () => {
-        frameRate(10);
-    });
-    fastest.addEventListener('click', () => {
-        frameRate(60);
-    });
     reset.addEventListener('click', () => {
         resetGrid();
     });
@@ -138,7 +123,7 @@ class Cell {
         const x = this.i * w;
         const y = this.j * w;
         noStroke();
-        fill(255,255,255);
+        fill(255, 255, 255);
         rect(x, y, w, w);
     }
 
@@ -197,3 +182,5 @@ class Cell {
         }
     }
 }
+
+
