@@ -3,16 +3,21 @@ var w = 50;
 var grid = [];
 var current;
 var stack = [];
+var gridBtn;
 
 function createGrid() {
+    gridBtn = document.getElementById('grid');
     cols = floor(width / w);
     rows = floor(height / w);
-    console.log(cols);
     for (let j = 0; j < rows; j++) {
         for (let i = 0; i < cols; i++) {
-            let cell = new Cell(i, j);
-            grid.push(cell);
-
+            if (gridBtn.value === "No Grid") {
+                let cell = new Cell(i, j, true, true, true, true);
+                grid.push(cell);
+            } else {
+                let cell = new Cell(i, j, false, false, false, false);
+                grid.push(cell);
+            }
         }
     }
 };
@@ -26,6 +31,8 @@ function resetGrid() {
 
 function setup() {
     createCanvas(600, 600);
+
+    gridBtn = document.getElementById('grid');
 
     createGrid();
     current = grid[0];
@@ -47,6 +54,17 @@ function setup() {
         resetGrid();
     });
 
+
+    gridBtn.addEventListener('click', () => {
+        console.log(gridBtn.value)
+        if (gridBtn.value === 'No Grid') {
+            gridBtn.value = 'Grid';
+            resetGrid();
+        } else {
+            gridBtn.value = 'No Grid';
+            resetGrid();
+        }
+    });
 
 };
 
@@ -109,13 +127,13 @@ function index(i, j) {
 }
 
 class Cell {
-    constructor(i, j) {
+    constructor(i, j, top = false, right = false, bottom = false, left = false) {
         this.i = i;
         this.j = j;
-        this.top = false;
-        this.right = false;
-        this.bottom = false;
-        this.left = false;
+        this.top = top;
+        this.right = right;
+        this.bottom = bottom;
+        this.left = left;
         this.visited = false;
     }
 
@@ -182,5 +200,4 @@ class Cell {
         }
     }
 }
-
 
