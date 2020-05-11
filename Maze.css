@@ -19,8 +19,17 @@ canvas {
 button {
     position: relative;
     float: left;
-    width: 70px;
-    height: 25px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 45px;
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
 }
 
 aside {
