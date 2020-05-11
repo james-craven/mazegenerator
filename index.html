@@ -25,19 +25,30 @@
         out
         the maze.</p>
     <p>
-        On the left, the "Easy, Medium, Hard" buttons determine how big the maze is while the "Slow, Faster, Fastest"
+        Below, the "Small, Bigger, Biggest" drop-down determines how big the maze is while the "Slow, Medium, Fast"
         buttons determine the speed at which
-        the maze is carved out. Try clicking "Slow" then "Easy" to see what's actually happening with the algorithm!
+        the maze is carved out. Try selecting "Slow" then "Small" to see what's actually happening with the algorithm!
     </p>
 </aside>
 
-<button id="easy">Easy</button>
-<button id="medium">Medium</button>
-<button id="hard">Hard</button>
-<button id="slow">Slow</button>
-<button id="faster">Faster</button>
-<button id="fastest">Fastest</button>
-<button id="reset">Reset</button>
+<div id="menu">
+    <div class="custom-select">
+        <select id="diffSelect">
+            <option value="50" selected>Small</option>
+            <option value="35">Bigger</option>
+            <option value="20">Biggest</option>
+            <option value="15">Extreme</option>
+        </select>
+    </div>
+    <div class="custom-select">
+        <select id="speedSelect">
+            <option value="1">Slow</option>
+            <option value="10">Medium</option>
+            <option value="60" selected>Fast</option>
+        </select>
+    </div>
+    <input id="reset" type="button" value="Reset" />
+</div>
 
 <body>
 
